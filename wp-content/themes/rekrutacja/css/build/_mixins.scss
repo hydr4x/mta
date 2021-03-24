@@ -1,0 +1,133 @@
+$break-small: 420px;
+$break-large: 1024px;
+
+@mixin media($media) {
+  @if $media == xs {
+    @media only screen and (max-width: $break-small) { @content; }
+  }
+  @else if $media == sm {
+    @media only screen and (min-width: $break-small + 1) and (max-width: $break-large - 1) { @content; }
+  }
+  @else if $media == lg {
+    @media only screen and (min-width: $break-large) { @content; }
+  }
+  @else if $media == xsm {
+    @media only screen and (max-width: 768px) { @content; }
+  }
+}
+
+@mixin parallaxDesktop() {
+  @media only screen and (min-width: 1024px) { @content; }
+}
+
+@mixin fontSet($fontSize: 16px, $fontWeight: normal) {
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+}
+
+// .media-ex {
+//   @include media(xs) { width: 100% ;}
+//   @include media(sm) { width: 125px; }
+//   @include media(lg) { float: none; }
+// }
+
+
+@mixin flexer($direction: column) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  text-align: center;
+}
+
+@mixin advFlexer($direction: column, $justify: center, $align: center, $alitems: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  text-align: $align;
+  align-items: $alitems;
+}
+
+@mixin btnCreator($background: #000, $backgroundHover: #000, $color: #fff, $colorHover: #fff, $padding: 5px, $marginTop: 5px, $marginBottom: 5px, $borderRadius: 0px) {
+  background-color: $background;
+  padding: $padding;
+  margin-top: $marginTop;
+  margin-bottom: $marginBottom;
+  border-radius: $borderRadius;
+  text-decoration: none;
+  &:link, &:visited, &:focus {
+    color: $color;
+    text-decoration: none;
+  }
+  &:hover {
+    background-color: $backgroundHover;
+    color: $colorHover;
+    text-decoration: none;
+  }
+}
+
+@mixin hrefCreator($color: #fff, $colorHover: #fff) {
+  text-decoration: none;
+  &:link, &:visited, &:focus {
+    color: $color;
+    text-decoration: none;
+  }
+  &:hover {
+    color: $colorHover;
+    text-decoration: none;
+  }
+}
+
+@mixin parallax($height, $image) {
+  min-height: $height;
+  //example '../images/parallax-header-n.jpg'
+  background-image: url($image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @include parallaxDesktop() {
+    background-attachment: fixed;
+  }
+}
+
+@mixin addDashesToHeadings {
+  &::before, &::after {
+    content: "-";
+    margin: 0px 10px;
+    color: $mainThemeColorDarken;
+    @include media(xs) {
+		  margin: 0px 5px;
+		}
+  }
+}
+
+@mixin addDashToStaticHeading {
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin: 0px 10px 0px 0px;
+    background-color: $mainThemeColorDarken;
+  }
+}
+
+@mixin scale($howMuch) {
+  transform:scale($howMuch);
+  -webkit-transform:scale($howMuch);
+  -moz-transform:scale($howMuch);
+  -o-transform:scale($howMuch);
+}
+
+@mixin duration($howMuch) {
+  transition-duration: $howMuch;
+  -webkit-transition-duration: $howMuch;
+  -moz-transition-duration: $howMuch;
+  -o-transition-duration: $howMuch;
+}
+
+@mixin imageHover($howMuch) {
+  filter: grayscale($howMuch);
+  -webkit-filter: grayscale($howMuch);
+  -moz-filter: grayscale($howMuch);
+  -o-filter: grayscale($howMuch);
+}

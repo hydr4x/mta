@@ -1,0 +1,82 @@
+
+@import "build/_mixins.scss";
+
+
+/*
++===========================+
+||                         ||
+||     by #<CodeUnion>     ||
+||           2021          ||
+||                         ||
++===========================+
+*/
+
+
+
+html,
+body {
+	background-color: #fff;
+	color: #000;
+	margin: 0;
+	margin-top: 0px !important;
+	padding: 0;
+	font-family: 'Montserrat', sans-serif !important;
+	-webkit-font-smoothing: antialiased;
+	width: 100%;
+	position: relative;
+}
+
+.theme-wrapper {
+	background-color: rgb(245, 245, 245);
+	padding-top: 20px;
+	padding-bottom: 50px;
+}
+
+.navbar {
+	&__brand {
+		&-logo {
+			width: 90%;
+		}
+	}
+}
+
+.left-sidebar {
+
+	&__wrapper {
+		background: rgb(204, 204, 204);
+		padding: 10px 15px;
+	}
+}
+
+.content {
+	background: #fff;
+	padding: 10px 15px 40px 15px;
+	min-height: 60vh;
+}
+
+.right-sidebar {
+
+	&__wrapper {
+		background: rgb(204, 204, 204);
+		padding: 10px 15px;
+	}
+}
+
+
+.footer {
+	color: #fff;
+	background-color: rgb(75, 75, 75);
+	padding: 20px 15px;
+	a {
+		@include hrefCreator(#fff, red);
+	}
+	p {
+		margin: 0px;
+	}
+	&__left {
+
+	}
+	&__right {
+		text-align: right;
+	}
+}
